@@ -29,7 +29,6 @@ Introduction		|arot13-introduction|
 Install			|arot13-install|
 Commands		|arot13-commands|
 Example			|arot13-example|
-FAQ			|arot13-faq|
 
 =============================================
 
@@ -62,10 +61,10 @@ Vundleを導入している場合は.vimrcに
 COMMANDS			*arot13-commands*
 
 :Arot13 <string>
-<string>がRot13エンコードされ、Vimの下部に出力されます。
+<string>がRot13エンコードし、Vimの下部に出力します。
 
 :Arot13P <string>
-<string>をRot13エンコードし、カーソル行の下にペーストされます。
+<string>をRot13エンコードし、カレントバッファのカーソル行下にペーストします。
 
 :'<,'>Arot13L
 Visualモードで選択した範囲の行全体をRot13化します。
@@ -73,10 +72,14 @@ Visualモードで選択した範囲の行全体をRot13化します。
 ================================================================================
 
 ================================================================================
-EXAMPLES			arot13-examples
+EXAMPLES			*arot13-examples*
 
 :Arot13 abc
-(出力)>> 
+(出力)>> nop
+
+:Arot13P abc
+(ペースト)>> abc
+
 ================================================================================
 
 
