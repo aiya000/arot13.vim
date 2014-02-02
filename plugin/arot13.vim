@@ -14,5 +14,7 @@ command! -narg=1 Arot13P call arot13#encode_put(<q-args>)
 
 command! -range=% Arot13L :<line1>, <line2> call arot13#encode_line()
 
+command! -range=% Arot13Y :<line1>, <line2> call arot13#yank_line()
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
