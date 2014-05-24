@@ -1,7 +1,7 @@
 *arot13.txt*	VimでRot13を扱うジョークプラグインです。
 
-Version: 0.9
-Author : aiya000 <udonge.like@gmail.com>
+Version: 0.9.1
+Author : aiya000 <aiya.develop@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
@@ -45,14 +45,14 @@ INSTALL				*arot13-install*
 
 特に依存しているプラグインはありません。
 公開場所は
-http://github/aiya000/arot13-vim
+http://github/aiya000/arot13.vim
 です。
 
-Vundleを導入している場合は.vimrcに
-	[Bundle 'aiya000/arot13-vim']
+NeoBundleを導入している場合は.vimrcに
+	[NeoBundle 'aiya000/arot13.vim']
 と書き、
-	[:so ~/.vimrc]
-	[:BundleInstall]
+	[:so $MYVIMRC]
+	[:NeoBundleInstall]
 と実行してもらえればインストールされます。
 
 ================================================================================
@@ -60,27 +60,27 @@ Vundleを導入している場合は.vimrcに
 ================================================================================
 COMMANDS			*arot13-commands*
 
-:Arot13 <string>
-<string>がRot13エンコードし、Vimの下部に出力します。
+:Rot13Echo <string>
+引数(<string>)をRot13エンコードし、Vimの下部に出力します。
 
-:Arot13P <string>
-<string>をRot13エンコードし、カレントバッファのカーソル行下にペーストします。
+:Rot13Put <string>
+<string>をRot13エンコードし、現在のカーソル位置の下にペーストします。
 
-:'<,'>Arot13L
+:'<,'>Rot13ReadLine
 Visualモードで選択した範囲の行全体をRot13化します。
 
-:'<,'>Arot13Y
-Visualモードで選択した範囲の行全体をRot13化してヤンクします。
+:'<,'>Rot13YankLine
+Visualモードで選択した範囲の行全体をRot13化してヤンクします。("レジスタにヤンクします。)
 
 ================================================================================
 
 ================================================================================
 EXAMPLES			*arot13-examples*
 
-:Arot13 abc
+:Rot13Echo abc
 (出力)>> nop
 
-:Arot13P abc
+:Rot13Put abc
 (ペースト)>> abc
 
 ================================================================================

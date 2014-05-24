@@ -86,14 +86,14 @@ function! arot13#encode_line() range
 	let @a = tmp
 endfunction
 "}}}
-" 範囲指定されたラインをRot13化して0レジスタにヤンク  {{{
+" 範囲指定されたラインをRot13化して"レジスタにヤンク  {{{
 function! arot13#yank_line() range
 	let str = ""
 	for i in range(a:firstline, a:lastline)
 		let str .= getline(i).'\n'
 	endfor
 
-	let @0 = substitute(arot13#calc_encode(str), '\\n', '\n', 'g')
+	let @" = substitute(arot13#calc_encode(str), '\\n', '\n', 'g')
 endfunction
 "}}}
 
