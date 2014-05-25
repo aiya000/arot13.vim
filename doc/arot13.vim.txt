@@ -37,6 +37,7 @@ Example			|arot13-example|
 INTRODUCTION			*arot13-introduction*
 
 このプラグインはVimでRot13エンコードを扱うためのジョークプラグインです。
+任意の数でシーザ暗号化を行うこともできます。
 なお日本語には対応していません。
 ================================================================================
 
@@ -63,6 +64,9 @@ COMMANDS			*arot13-commands*
 :Rot13Echo <string>
 引数(<string>)をRot13エンコードし、Vimの下部に出力します。
 
+:RotnEcho <number> <string>
+引数(<string>)を<number>シフト分のシーザ暗号化し、Vimの下部に出力します。
+
 :Rot13Put <string>
 <string>をRot13エンコードし、現在のカーソル位置の下にペーストします。
 
@@ -79,6 +83,9 @@ EXAMPLES			*arot13-examples*
 
 :Rot13Echo abc
 (出力)>> nop
+
+:RotnEcho 1 abc
+(出力)>> bcd
 
 :Rot13Put abc
 (ペースト)>> abc

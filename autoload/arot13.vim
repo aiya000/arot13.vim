@@ -8,8 +8,9 @@ let s:alpha = [
 \	['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 \]
 
-"" Rot13の計算 ""
-function! arot13#calc_encode(str) "{{{
+"" Rot nの計算 ""
+let s:ALPHA_NUM = 26
+function! arot13#calc_encode(shiftN, str) "{{{
 	let rot = ""
 	" 文字列中の文字比較ループ
 	let escFlag = 0
@@ -36,12 +37,13 @@ function! arot13#calc_encode(str) "{{{
 		" アルファベット(小大)と比較ループ
 		for cap in range(0, 1)
 			for a in range(0, len(s:alpha[cap])-1)
-				" Rot13を適用
+				" Rot nを適用
 				if a:str[i] == s:alpha[cap][a]
 					if a+13 > len(s:alpha[cap][a])-1
-						let rot .= s:alpha[cap][a-13]
+						" TODO
+						let rot .= s:alpha[cap][a - (s:ALPHA_NUM - a:shiftN)]
 					else
-						let rot .= s:alpha[cap][a+13]
+						let rot .= s:alpha[cap][a + (s:ALPHA_NUM - a:shiftN)]
 					endif
 					let addedFlag = 1
 				endif
@@ -60,41 +62,49 @@ endfunction "}}}
 
 "" 実際の操作 ""
 " 受け渡された文字列をecho {{{
-function! arot13#encode_echo(str)
-	echo arot13#calc_encode(a:str)
+
+function! arot13#encode_echo(n, str)
+	echo arot13#calc_encode(a:n, a:str)
 endfunction
+
 "}}}
 " 受け渡された文字列をput {{{
-function! arot13#encode_put(str)
-	let result = arot13#calc_encode(a:str)
+
+function! arot13#encode_put(n, str)
+	let result = arot13#calc_encode(a:n, a:str)
 	let bakpos = getpos('.')
 	execute ":normal a" . result
 	call setpos('.', bakpos)
 endfunction
+
 "}}}
-" 範囲指定されたラインをRot13化  {{{
-function! arot13#encode_line() range
+" 範囲指定されたラインをRot n化  {{{
+
+function! arot13#encode_line(n) range
 	let str = ""
 	for i in range(a:firstline, a:lastline)
 		let str .= getline(i).'\n'
 	endfor
 
 	let tmp = @a
-	let @a = substitute(arot13#calc_encode(str), '\\n', '\n', 'g')
+	let @a = substitute(arot13#calc_encode(a:n, str), '\\n', '\n', 'g')
 	execute a:firstline.",".a:lastline."delete"
 	execute 'normal "aP'
 	let @a = tmp
 endfunction
+
 "}}}
 " 範囲指定されたラインをRot13化して"レジスタにヤンク  {{{
-function! arot13#yank_line() range
+
+function! arot13#yank_line(n) range
 	let str = ""
 	for i in range(a:firstline, a:lastline)
 		let str .= getline(i).'\n'
 	endfor
 
-	let @" = substitute(arot13#calc_encode(str), '\\n', '\n', 'g')
+	let @" = substitute(arot13#calc_encode(a:n, str), '\\n', '\n', 'g')
 endfunction
+
 "}}}
 
 "-=-=-=-=-=-=-=-=-=-"
