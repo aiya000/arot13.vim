@@ -8,7 +8,7 @@ let s:alpha = [
 \	['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 \]
 
-"" Rot nの計算 ""
+"" Rot n(Caesar)の計算 ""
 let s:ALPHA_NUM = 26
 function! arot13#calc_encode(shiftN, str) "{{{
 	let rot = ""
@@ -73,7 +73,7 @@ endfunction
 function! arot13#encode_put(n, str)
 	let result = arot13#calc_encode(a:n, a:str)
 	let bakpos = getpos('.')
-	execute ":normal a" . result
+	execute ":normal i" . result
 	call setpos('.', bakpos)
 endfunction
 

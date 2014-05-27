@@ -1,7 +1,7 @@
 VimでRot13を扱うためのジョークプラグインです。
 任意の数でシーザ暗号化を行うこともできます。
 
-Version: 0.9.1
+Version: 0.9.2
 Author : aiya000 <aiya000.develop@gmail.com>
 
 License: MIT license  {{{
