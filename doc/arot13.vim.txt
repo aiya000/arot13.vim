@@ -61,22 +61,22 @@ NeoBundleを導入している場合は.vimrcに
 ================================================================================
 COMMANDS			*arot13-commands*
 
-:Rot13Echo <string>
+:ArotRot13Echo <string>
 引数(<string>)をRot13エンコードし、Vimの下部に出力します。
 
-:CaesarEcho <number> <string>
+:ArotCaesarEcho <number> <string>
 引数(<string>)を<number>シフト分のシーザ暗号化し、Vimの下部に出力します。
 
-:Rot13Put <string>
+:ArotRot13Put <string>
 <string>をRot13エンコードし、現在のカーソル位置の下にペーストします。
 
-:CaesarPut <number> <string>
+:ArotCaesarPut <number> <string>
 引数(<string>)を<number>シフト分のシーザ暗号化し、現在のカーソル位置の下にペーストします。
 
-:'<,'>Rot13ReadLine
+:'<,'>ArotRot13ReadLine
 Visualモードで選択した範囲の行全体をRot13化します。
 
-:'<,'>Rot13YankLine
+:'<,'>ArotRot13YankLine
 Visualモードで選択した範囲の行全体をRot13化してヤンクします。("レジスタにヤンクします。)
 
 ================================================================================
@@ -84,13 +84,13 @@ Visualモードで選択した範囲の行全体をRot13化してヤンクしま
 ================================================================================
 EXAMPLES			*arot13-examples*
 
-:Rot13Echo abc
+:ArotRot13Echo abc
 (出力)>> nop
 
-:CaesarEcho 1 abc
+:ArotCaesarEcho 1 abc
 (出力)>> bcd
 
-:Rot13Put abc
+:ArotRot13Put abc
 (ペースト)>> abc
 
 ================================================================================
