@@ -1,7 +1,7 @@
 
 *arot13.txt*	VimでRot13を扱うジョークプラグインです。
 
-Version: 0.9.1
+Version: 0.9.2
 Author : aiya000 <aiya.develop@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -51,10 +51,10 @@ http://github/aiya000/arot13.vim
 です。
 
 NeoBundleを導入している場合は.vimrcに
-	[NeoBundle 'aiya000/arot13.vim']
+	NeoBundle 'aiya000/arot13.vim'
 と書き、
-	[:so $MYVIMRC]
-	[:NeoBundleInstall]
+	:so $MYVIMRC
+	:NeoBundleInstall
 と実行してもらえればインストールされます。
 
 ================================================================================
@@ -74,10 +74,10 @@ COMMANDS			*arot13-commands*
 :ArotCaesarPut <number> <string>
 引数(<string>)を<number>シフト分のシーザ暗号化し、現在のカーソル位置の下にペーストします。
 
-:'<,'>ArotRot13ReadLine
+:'<,'>ArotRot13
 Visualモードで選択した範囲の行全体をRot13化します。
 
-:'<,'>ArotRot13YankLine
+:'<,'>ArotRot13
 Visualモードで選択した範囲の行全体をRot13化してヤンクします。("レジスタにヤンクします。)
 
 ================================================================================

@@ -40,7 +40,6 @@ function! arot13#calc_encode(shiftN, str) "{{{
 				" Rot nを適用
 				if a:str[i] == s:alpha[cap][a]
 					if a+13 > len(s:alpha[cap][a])-1
-						" TODO
 						let rot .= s:alpha[cap][a - (s:ALPHA_NUM - a:shiftN)]
 					else
 						let rot .= s:alpha[cap][a + (s:ALPHA_NUM - a:shiftN)]
@@ -73,7 +72,7 @@ endfunction
 function! arot13#encode_put(n, str)
 	let result = arot13#calc_encode(a:n, a:str)
 	let bakpos = getpos('.')
-	execute ":normal i" . result
+	execute 'normal! i' . result
 	call setpos('.', bakpos)
 endfunction
 
@@ -83,14 +82,11 @@ endfunction
 function! arot13#encode_line(n) range
 	let str = ""
 	for i in range(a:firstline, a:lastline)
-		let str .= getline(i).'\n'
+		let str .= getline(i) . '\n'
 	endfor
 
-	let tmp = @a
-	let @a = substitute(arot13#calc_encode(a:n, str), '\\n', '\n', 'g')
 	execute a:firstline.",".a:lastline."delete"
-	execute 'normal "aP'
-	let @a = tmp
+	execute 'normal! i' . substitute(arot13#calc_encode(a:n, str), '\\n', '\n', 'g')
 endfunction
 
 "}}}

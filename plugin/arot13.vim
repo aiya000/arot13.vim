@@ -14,11 +14,11 @@ command! -narg=+ ArotRotNEcho  call arot13#encode_echo(<f-args>)
 command! -narg=1 ArotRot13Put  call arot13#encode_put(13, <q-args>)
 command! -narg=+ ArotRotNPut   call arot13#encode_put(<f-args>)
 
-command! -narg=* -range=% ArotRot13ReadLine :<line1>, <line2> call arot13#encode_line(13, <f-args>)
-command! -narg=+ -range=% ArotCaesarReadLine :<line1>, <line2> call arot13#encode_line(<f-args>)
+command! -narg=* -range=% ArotRot13  :<line1>, <line2> call arot13#encode_line(13, <f-args>)
+command! -narg=+ -range=% ArotCaesar :<line1>, <line2> call arot13#encode_line(<f-args>)
 
-command! -narg=* -range=% ArotRot13YankLine :<line1>, <line2> call arot13#yank_line(13, <f-args>)
-command! -narg=* -range=% ArotCaesarYankLine :<line1>, <line2> call arot13#yank_line(<f-args>)
+command! -narg=* -range=% ArotRot13Yank  :<line1>, <line2> call arot13#yank_line(13, <f-args>)
+command! -narg=* -range=% ArotCaesarYank :<line1>, <line2> call arot13#yank_line(<f-args>)
 
 
 "-=-=-=-=-=-=-=-=-=-"
